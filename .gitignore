@@ -5,3 +5,7 @@ demo/
 apidoc/
 dist/
 *.log
+.vscode/**
+plan.todo
+ARCHIVE.plan.todo
+other/**

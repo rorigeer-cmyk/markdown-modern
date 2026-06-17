@@ -9,18 +9,8 @@
     "markdown-it",
     "markdown-it-plugin"
   ],
-  "repository": "markdown-it/markdown-it",
+  "repository": "rorigeer-cmyk/markdown-modern",
   "license": "MIT",
-  "funding": [
-    {
-      "type": "github",
-      "url": "https://github.com/sponsors/puzrin"
-    },
-    {
-      "type": "github",
-      "url": "https://github.com/sponsors/markdown-it"
-    }
-  ],
   "main": "dist/index.cjs.js",
   "module": "index.mjs",
   "exports": {
