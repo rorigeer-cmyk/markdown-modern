@@ -1,34 +1,50 @@
 name: CI
 
 on:
+  workflow_dispatch:
   push:
+    paths:
+      - 'lib/**'
+      - 'test/**'
+      - 'index.mjs'
+      - 'bin/**'
+      - 'package.json'
+      - 'support/rollup.config.mjs'
+      - 'support/specsplit.mjs'
+    
   pull_request:
-  schedule:
-    - cron: '0 0 * * 3'
+    paths:
+      - 'lib/**'
+      - 'test/**'
+      - 'index.mjs'
+      - 'bin/**'
+      - 'package.json'
+      - 'support/rollup.config.mjs'
+      - 'support/specsplit.mjs'
+  
 
 jobs:
   test:
-
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
-        node-version: [ '24' ]
+        node-version: ["24"]
 
     steps:
-    - uses: actions/checkout@v5
+      - uses: actions/checkout@v5
 
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v6
-      with:
-        node-version: ${{ matrix.node-version }}
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v6
+        with:
+          node-version: ${{ matrix.node-version }}
 
-    - run: npm install
+      - run: npm install
 
-    - name: Test
-      run: npm test
+      - name: Test
+        run: npm test
 
-    - name: Upload coverage report to coveralls.io
-      uses: coverallsapp/github-action@v2
-      with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Upload coverage report to coveralls.io
+        uses: coverallsapp/github-action@v2
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
