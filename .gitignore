@@ -5,3 +5,8 @@ demo/
 apidoc/
 dist/
 *.log
+.vscode/**
+other/**
+check_list_plan.todo
+ARCHIVE.check_list_plan.todo
+.gigacode/**
