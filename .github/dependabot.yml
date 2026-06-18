@@ -9,5 +9,16 @@ updates:
     directory: /
     schedule:
       interval: daily
-    allow:
-      - dependency-type: production
+
+    groups:
+      regular-updates:
+        applies-to: version-updates
+        update-types: ["patch", "minor"]
+        dependency-type: production
+      development-updates:
+        applies-to: version-updates
+        update-types: ["patch", "minor"]
+        dependency-type: development
+      security-patches:
+        applies-to: security-updates
+        update-types: ["patch"]
