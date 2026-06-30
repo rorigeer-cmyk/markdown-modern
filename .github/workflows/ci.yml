@@ -2,7 +2,25 @@ name: CI
 
 on:
   push:
+    paths:
+      - 'lib/**'
+      - 'test/**'
+      - 'index.mjs'
+      - 'bin/**'
+      - 'package.json'
+      - 'support/rollup.config.mjs'
+      - 'support/specsplit.mjs'
+    
   pull_request:
+    paths:
+      - 'lib/**'
+      - 'test/**'
+      - 'index.mjs'
+      - 'bin/**'
+      - 'package.json'
+      - 'support/rollup.config.mjs'
+      - 'support/specsplit.mjs'
+  
   schedule:
     - cron: '0 0 * * 3'
 
