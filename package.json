@@ -84,7 +84,7 @@
     "ndoc": "^6.0.1",
     "needle": "^3.5.0",
     "rollup": "^4.62.2",
-    "shelljs": "^0.8.5"
+    "shelljs": "^0.10.0"
   },
   "mocha": {
     "inline-diffs": true,
