@@ -5,3 +5,8 @@ demo/
 apidoc/
 dist/
 *.log
+.vscode/**
+other/**
+*.todo
+.gigacode/**
+jsconfig.json
