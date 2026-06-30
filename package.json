@@ -47,7 +47,7 @@
   ],
   "dependencies": {
     "argparse": "^2.0.1",
-    "entities": "^4.5.0",
+    "entities": "^8.0.0",
     "linkify-it": "^5.0.1",
     "mdurl": "^2.0.0",
     "punycode.js": "^2.3.1",
@@ -63,12 +63,12 @@
     "benchmark": "~2.1.4",
     "c8": "^11.0.0",
     "chai": "^6.2.2",
-    "cross-env": "^7.0.3",
+    "cross-env": "^10.1.0",
     "eslint": "^10.6.0",
     "eslint-plugin-markdown-preferences": "0.41.1",
     "gh-pages": "^6.3.0",
     "highlight.js": "^11.11.1",
-    "jest-worker": "^29.7.0",
+    "jest-worker": "^30.4.1",
     "markdown-it-abbr": "^2.0.0",
     "markdown-it-container": "^4.0.0",
     "markdown-it-deflist": "^3.0.1",
@@ -84,7 +84,7 @@
     "ndoc": "^6.0.1",
     "needle": "^3.5.0",
     "rollup": "^4.62.2",
-    "shelljs": "^0.8.5"
+    "shelljs": "^0.10.0"
   },
   "mocha": {
     "inline-diffs": true,
