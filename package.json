@@ -63,7 +63,7 @@
     "benchmark": "~2.1.4",
     "c8": "^11.0.0",
     "chai": "^6.2.2",
-    "cross-env": "^7.0.3",
+    "cross-env": "^10.1.0",
     "eslint": "^10.6.0",
     "eslint-plugin-markdown-preferences": "0.41.1",
     "gh-pages": "^6.3.0",
