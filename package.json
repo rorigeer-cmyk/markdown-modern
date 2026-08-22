@@ -34,7 +34,7 @@
     "demo": "pnpm run lint && node support/build_demo.mjs",
     "gh-demo": "pnpm run demo && gh-pages -d demo -f -b master -r git@github.com:markdown-it/markdown-it.github.io.git",
     "build": "rollup -c support/rollup.config.mjs",
-    "benchmark-deps": "npm install --prefix benchmark/extra/ -g marked@0.3.6 commonmark@0.26.0 markdown-it/markdown-it.git#2.2.1",
+    "bench": "node benchmark/benchmark.mjs",
     "specsplit": "support/specsplit.mjs good -o test/fixtures/commonmark/good.txt && support/specsplit.mjs bad -o test/fixtures/commonmark/bad.txt && support/specsplit.mjs",
     "todo": "grep 'TODO' -n -r ./lib 2>/dev/null",
     "prepublishOnly": "pnpm test && pnpm run build && pnpm run gh-demo && pnpm run gh-doc"
@@ -57,8 +57,6 @@
     "@rollup/plugin-commonjs": "^25.0.8",
     "@rollup/plugin-node-resolve": "^15.3.1",
     "@rollup/plugin-terser": "^0.4.4",
-    "ansi": "^0.3.1",
-    "benchmark": "~2.1.4",
     "c8": "^8.0.1",
     "chai": "^4.5.0",
     "cross-env": "^7.0.3",
