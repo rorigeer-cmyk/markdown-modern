@@ -5,3 +5,7 @@ demo/
 apidoc/
 dist/
 *.log
+.vscode/
+*.todo
+other/*
+.gigacode_vsc/*
