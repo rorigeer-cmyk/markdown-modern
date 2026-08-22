@@ -1,0 +1,10 @@
+minimumReleaseAge: 1440
+strictDepBuilds: true
+trustPolicy: no-downgrade
+shellEmulator: true
+# NOTE: - "" # указывать в комментариях почему
+trustPolicyExclude:
+ - "semver@6.3.1" # FIXME: When updates `gh-pages`
+blockExoticSubdeps: true
+verifyStoreIntegrity: true
+optimisticRepeatInstall: true
