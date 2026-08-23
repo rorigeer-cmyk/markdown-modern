@@ -127,8 +127,8 @@ importers:
         specifier: 2.2.1
         version: 2.2.1
       marked:
-        specifier: 0.3.6
-        version: 0.3.6
+        specifier: 4.0.10
+        version: 4.0.10
     devDependencies:
       ansi:
         specifier: ^0.3.1
@@ -1697,8 +1697,9 @@ packages:
   markdown-it@2.2.1:
     resolution: {integrity: sha512-FMl50iLDiBc/tcG4QnhyrdAOPDNOyLR7Cxklav8yspWk8cf4V/E3CGRTrNB2xNIIR/8Mc8CXLoFd9DwgNchnvQ==}
 
-  marked@0.3.6:
-    resolution: {integrity: sha512-gE75oL01YUIxaBqgeGBuNNd8u0L+H1N6xeW/s+O57o5EC31aPX1M1lD4W9eGyHFJGTwOgMkqzYODZ4yp5w20gQ==}
+  marked@4.0.10:
+    resolution: {integrity: sha512-+QvuFj0nGgO970fySghXGmuw+Fd0gD2x3+MqCWLIPf5oxdv1Ka6b2q+z9RP01P/IaKPMEramy+7cNy/Lw8c3hw==}
+    engines: {node: '>= 12'}
     hasBin: true
 
   math-intrinsics@1.1.0:
@@ -4177,7 +4178,7 @@ snapshots:
       argparse: 0.1.16
       autolinker: 0.15.3
 
-  marked@0.3.6: {}
+  marked@4.0.10: {}
 
   math-intrinsics@1.1.0: {}
 
