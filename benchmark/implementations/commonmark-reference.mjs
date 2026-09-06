@@ -1,9 +1,7 @@
-import { createRequire } from 'node:module'
+import { Parser, HtmlRenderer } from "commonmark";
 
-const commonmark = createRequire(import.meta.url)('../node_modules/commonmark')
-
-const parser = new commonmark.Parser()
-const renderer = new commonmark.HtmlRenderer()
+const parser = new Parser()
+const renderer = new HtmlRenderer()
 
 export function run (data) {
   return renderer.render(parser.parse(data))

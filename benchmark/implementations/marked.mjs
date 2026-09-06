@@ -1,7 +1,10 @@
-import { createRequire } from 'node:module'
+import {marked as m} from "marked";
 
-const marked = createRequire(import.meta.url)('../node_modules/marked')
-
+const marked = m.setOptions({
+    gfm: false,
+    breaks: false,
+    pedantic: false,
+  })
 export function run (data) {
-  return marked(data)
+  return marked.parse(data)
 }
