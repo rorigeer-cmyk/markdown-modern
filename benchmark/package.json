@@ -1,0 +1,9 @@
+{
+  "type": "module",
+  "private": true,
+  "dependencies": {
+    "marked": "0.3.6",
+    "commonmark": "0.26.0",
+    "markdown-it": "markdown-it/markdown-it.git#2.2.1"
+  }
+}
