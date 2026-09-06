@@ -1,14 +1,21 @@
-import { readdir } from 'node:fs/promises'
-import { join } from 'node:path'
+import { run as commonmarkReference } from './implementations/commonmark-reference.mjs'
+import { run as currentCommonmark } from './implementations/current-commonmark.mjs'
+import { run as current } from './implementations/current.mjs'
+import { run as lastPublicCommonmark } from './implementations/lastPublic-commonmark.mjs'
+import { run as marked } from './implementations/marked.mjs'
+import { run as lastPublic } from "./implementations/lastPublic.mjs"
+export const markdownIt = [
+  { name: 'current', run: current },
+  { name: 'lastPublic', run: lastPublic }
+]
 
-const implDir = join(import.meta.dirname, 'implementations')
+export const markdownItCommonmark = [
+  { name: 'current-commonmark', run: currentCommonmark },
+  { name: 'lastPublic-commonmark', run: lastPublicCommonmark },
+]
 
-export async function loadParsers() {
-  const files = await readdir(implDir)
-  return Promise.all(
-    files.sort().map(async (name) => ({
-      name,
-      code: await import(`./implementations/${name}`),
-    }))
-  )
-}
+export const alternatives = [
+  { name: 'commonmark-reference', run: commonmarkReference },
+  { name: 'current', run: current },
+  { name: 'marked', run: marked },
+]
