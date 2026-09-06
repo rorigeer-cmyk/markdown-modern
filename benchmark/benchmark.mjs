@@ -1,97 +1,40 @@
 #!/usr/bin/env node
 /* eslint no-console:0 */
 
-import fs from 'node:fs'
-import util from 'node:util'
 import Benchmark from 'benchmark'
 import ansi from 'ansi'
-const cursor    = ansi(process.stdout)
+import { loadParsers } from './loadParsers.mjs'
+import { loadSamples } from './loadSamples.mjs'
 
-const IMPLS = []
+const cursor = ansi(process.stdout)
 
-for (const name of fs.readdirSync(new URL('./implementations', import.meta.url)).sort()) {
-  const filepath = new URL(`./implementations/${name}`, import.meta.url)
-  const code = (await import(filepath))
+const [PARERS, samples] = await Promise.all([loadParsers(), loadSamples()])
 
-  IMPLS.push({ name, code })
-}
 
-const SAMPLES = []
-
-fs.readdirSync(new URL('./samples', import.meta.url)).sort().forEach(sample => {
-  const filepath = new URL(`./samples/${sample}`, import.meta.url)
-
-  const content = {}
-
-  content.string = fs.readFileSync(filepath, 'utf8')
-
-  const title = `(${content.string.length} bytes)`
-
+for (const { title, content } of samples) {
   function onComplete () { cursor.write('\n') }
 
   const suite = new Benchmark.Suite(
     title,
     {
-      onStart: () => { console.log('\nSample: %s %s', sample, title) },
-      onComplete
+      onStart: () => { console.log('\nSample: %s', title) },
     }
   )
 
-  IMPLS.forEach(function (impl) {
+  for (const impl of PARERS) {
     suite.add(
       impl.name,
       {
-        onCycle: function onCycle (event) {
+        onCycle(event) {
           cursor.horizontalAbsolute()
           cursor.eraseLine()
           cursor.write(' > ' + event.target)
         },
         onComplete,
-        fn: function () { impl.code.run(content.string) }
+        fn() { impl.code.run(content) }
       }
     )
-  })
-
-  SAMPLES.push({ name: sample.split('.')[0], title, content, suite })
-})
-
-function select (patterns) {
-  const result = []
-
-  if (!(patterns instanceof Array)) {
-    patterns = [patterns]
   }
 
-  function checkName (name) {
-    return patterns.length === 0 || patterns.some(function (regexp) {
-      return regexp.test(name)
-    })
-  }
-
-  SAMPLES.forEach(function (sample) {
-    if (checkName(sample.name)) {
-      result.push(sample)
-    }
-  })
-
-  return result
+  suite.run()
 }
-
-function run (files) {
-  const selected = select(files)
-
-  if (selected.length > 0) {
-    console.log('Selected samples: (%d of %d)', selected.length, SAMPLES.length)
-    selected.forEach(function (sample) {
-      console.log(' > %s', sample.name)
-    })
-  } else {
-    console.log('There isn\'t any sample matches any of these patterns: %s', util.inspect(files))
-  }
-
-  selected.forEach(function (sample) {
-    sample.suite.run()
-  })
-}
-
-run(process.argv.slice(2).map(source => new RegExp(source, 'i')))
