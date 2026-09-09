@@ -1,9 +1,17 @@
 {
-  "scripts": {},
+  "scripts": {
+    "bench": "modestbench",
+    "bench:regression": "modestbench --tag regression",
+    "bench:commonmark": "modestbench --tag commonmark",
+    "bench:competitor": "modestbench --tag competitor"
+  },
   "private": true,
   "dependencies": {
-    "marked":"0.3.6",
-    "commonmark":"0.26.0",
-    "markdown-it":"markdown-it/markdown-it.git#2.2.1"
+    "commonmark": "0.31.2",
+    "markdown-it": "markdown-it/markdown-it.git#14.2.0",
+    "marked": "18.0.12"
+  },
+  "devDependencies": {
+    "@types/commonmark": "^0.27.10"
   }
 }
