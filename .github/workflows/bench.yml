@@ -1,0 +1,28 @@
+name: Performance Tests
+on: [push, pull_request]
+
+jobs:
+  benchmark:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+
+      - run: npm ci
+      - run: npm run build
+
+      - name: Run Benchmarks
+        run: |
+          modestbench \
+            --reporter json \
+            --reporter csv \
+            --output ./results \
+            --tag regression
+
+      - name: Upload Results
+        uses: actions/upload-artifact@v7
+        with:
+          name: benchmark-results
+          path: ./results/
