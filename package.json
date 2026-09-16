@@ -1,5 +1,5 @@
 {
-  "name": "markdown-it",
+  "name": "markdown-modern",
   "version": "14.2.0",
   "description": "Markdown-it - modern pluggable markdown parser.",
   "keywords": [
@@ -9,18 +9,8 @@
     "markdown-it",
     "markdown-it-plugin"
   ],
-  "repository": "markdown-it/markdown-it",
+  "repository": "https://github.com/rorigeer-cmyk/markdown-modern",
   "license": "MIT",
-  "funding": [
-    {
-      "type": "github",
-      "url": "https://github.com/sponsors/puzrin"
-    },
-    {
-      "type": "github",
-      "url": "https://github.com/sponsors/markdown-it"
-    }
-  ],
   "main": "dist/index.cjs.js",
   "module": "index.mjs",
   "exports": {
