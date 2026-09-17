@@ -10,7 +10,7 @@ const cursor    = ansi(process.stdout)
 const IMPLS = []
 
 for (const name of fs.readdirSync(new URL('./implementations', import.meta.url)).sort()) {
-  const filepath = new URL(`./implementations/${name}/index.mjs`, import.meta.url)
+  const filepath = new URL(`./implementations/${name}`, import.meta.url)
   const code = (await import(filepath))
 
   IMPLS.push({ name, code })
