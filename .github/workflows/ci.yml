@@ -31,17 +31,16 @@ jobs:
         node-version: [ '24' ]
 
     steps:
-    - uses: actions/checkout@v5
+    - uses: actions/checkout@v7
 
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v6
+    - uses: pnpm/setup@v2
       with:
-        node-version: ${{ matrix.node-version }}
+        runtime: node@24
+        cache: true
 
-    - run: npm install
 
     - name: Test
-      run: npm test
+      run: pnpm test
 
     - name: Upload coverage report to coveralls.io
       uses: coverallsapp/github-action@v2
