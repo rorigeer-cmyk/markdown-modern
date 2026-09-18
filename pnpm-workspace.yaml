@@ -8,3 +8,6 @@ trustPolicyExclude:
 blockExoticSubdeps: true
 verifyStoreIntegrity: true
 optimisticRepeatInstall: true
+packages:
+  - .
+  - benchmark
