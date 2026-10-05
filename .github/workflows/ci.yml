@@ -2,9 +2,24 @@ name: CI
 
 on:
   push:
+    paths:
+      - 'lib/**'
+      - 'test/**'
+      - 'index.mjs'
+      - 'bin/**'
+      - 'package.json'
+      - 'support/rollup.config.mjs'
+      - 'support/specsplit.mjs'
+
   pull_request:
-  schedule:
-    - cron: '0 0 * * 3'
+    paths:
+      - 'lib/**'
+      - 'test/**'
+      - 'index.mjs'
+      - 'bin/**'
+      - 'package.json'
+      - 'support/rollup.config.mjs'
+      - 'support/specsplit.mjs'
 
 jobs:
   test:
@@ -16,10 +31,10 @@ jobs:
         node-version: [ '24' ]
 
     steps:
-    - uses: actions/checkout@v5
+    - uses: actions/checkout@v7
 
     - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v6
+      uses: actions/setup-node@v7
       with:
         node-version: ${{ matrix.node-version }}
 
