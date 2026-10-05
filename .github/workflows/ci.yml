@@ -3,47 +3,47 @@ name: CI
 on:
   push:
     paths:
-      - 'lib/**'
-      - 'test/**'
-      - 'index.mjs'
-      - 'bin/**'
-      - 'package.json'
-      - 'support/rollup.config.mjs'
-      - 'support/specsplit.mjs'
+      - "lib/**"
+      - "test/**"
+      - "index.mjs"
+      - "bin/**"
+      - "package.json"
+      - "support/rollup.config.mjs"
+      - "support/specsplit.mjs"
+      - "pnpm-lock.yaml"
 
   pull_request:
     paths:
-      - 'lib/**'
-      - 'test/**'
-      - 'index.mjs'
-      - 'bin/**'
-      - 'package.json'
-      - 'support/rollup.config.mjs'
-      - 'support/specsplit.mjs'
+      - "lib/**"
+      - "test/**"
+      - "index.mjs"
+      - "bin/**"
+      - "package.json"
+      - "support/rollup.config.mjs"
+      - "support/specsplit.mjs"
+      - "pnpm-lock.yaml"
 
 jobs:
   test:
-
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
-        node-version: [ '24' ]
+        node-version: ["24"]
 
     steps:
-    - uses: actions/checkout@v7
+      - uses: actions/checkout@v7
 
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v7
-      with:
-        node-version: ${{ matrix.node-version }}
+      - name: Install pnpm and Node.js
+        uses: pnpm/setup@v3.0.0
+        with:
+          runtime: node@${{ matrix.node-version }}
+          cache: true
 
-    - run: npm install
+      - name: Test
+        run: pnpm test
 
-    - name: Test
-      run: npm test
-
-    - name: Upload coverage report to coveralls.io
-      uses: coverallsapp/github-action@v2
-      with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Upload coverage report to coveralls.io
+        uses: coverallsapp/github-action@v2
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
