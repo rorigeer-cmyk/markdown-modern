@@ -5,6 +5,9 @@ on:
   schedule:
     - cron: "30 12 * * 1"
   # Change "main" to your default branch if you use a different name, i.e. "master"
+  push:
+    paths:
+      - "pnpm-lock.yaml"
   pull_request:
     branches: [main]
 
@@ -18,4 +21,4 @@ permissions:
 
 jobs:
   scan-scheduled:
-    uses: "google/osv-scanner-action/.github/workflows/osv-scanner-reusable.yml@v2.6.0"
+    uses: "google/osv-scanner-action/.github/workflows/osv-scanner-reusable.yml@v2.7.0"
