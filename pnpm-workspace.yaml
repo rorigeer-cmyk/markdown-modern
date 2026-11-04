@@ -10,3 +10,6 @@ verifyStoreIntegrity: true
 optimisticRepeatInstall: false
 nodeVersion: 24.22.2
 verifyDepsBeforeRun: install
+packages:
+  - .
+  - benchmark
